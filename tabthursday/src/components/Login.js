@@ -13,11 +13,11 @@ class Login extends React.Component {
     login(){
         //use login from aciton here
     }
-    redner(){
+    render(){
         return(
             <div className = 'login'>
                 <form>
-                    <input type = 'text' palceholder = 'username'>
+                    <input type = 'text' placeholder = 'username'>
                     
                     </input>
                     <input type = 'password' placeholder = 'password'>
