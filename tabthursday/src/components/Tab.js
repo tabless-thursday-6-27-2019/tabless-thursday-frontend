@@ -7,6 +7,7 @@ const Tab = (props) => {
             <p>{props.tab.title}</p>
             <p>{props.tab.icon}</p>
             <p>{props.tab.description}</p>
+            
         </div>
 
     );
