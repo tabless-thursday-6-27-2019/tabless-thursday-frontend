@@ -1,5 +1,9 @@
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+export const SIGNUP_START = 'SIGNUP_START';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAIL = 'SIGNUP_FAIL';
+
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
@@ -23,12 +27,29 @@ export const UPDATE_FAIL = 'UPDATE_FAIL';
 
 //LOGIN
 export const login = creds => dispatch =>{
+    dispatch({ type: SIGNUP_START });
+    return axiosWithAuth()
+        .post('/login', creds) //endpoint?
+        .then(res => {
+            console.log(res.data);
+            localStorage.setItem('token', res.data.token) 
+            dispatch({ type: SIGNUP_SUCCESS });
+            return true;
+        })
+        .catch(err => {
+            console.log(err.response);
+            dispatch({ type: SIGNUP_FAIL })
+        })
+}
+
+//LOGIN
+export const login = creds => dispatch =>{
     dispatch({ type: LOGIN_START });
     return axiosWithAuth()
         .post('/login', creds) //endpoint?
         .then(res => {
             console.log(res.data);
-            localStorage.setItem('token', res.data.payload) 
+            localStorage.setItem('token', res.data.token) 
             dispatch({ type: LOGIN_SUCCESS });
             return true;
         })
@@ -43,7 +64,7 @@ export const login = creds => dispatch =>{
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_START });
     axiosWithAuth()
-    .get('') //get endpoint here
+    .get('/register') //get endpoint here
     .then(res => {
         console.log(res);
         console.log('res.data', res.data)
