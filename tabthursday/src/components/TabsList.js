@@ -17,12 +17,14 @@ class TabsList extends React.Component {
     return (
       <div>
         <h1>showing tabs bitchezzzzz</h1>
+
         {this.props.tabs.map(tab => {
           return(
             <Tab 
               tab = {tab}
             />
           )
+
         })}
       </div>
     );
