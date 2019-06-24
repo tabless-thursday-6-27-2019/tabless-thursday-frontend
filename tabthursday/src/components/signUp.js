@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 
 class SignUp extends React.Component {
   state = {
-    email: '',
-    password: ''
+    creds: {
+      email: '',
+      password: ''
+    }
   };
 
   handleChanges = e => {
     e.preventDefault();
     this.setState({
-      [e.target.name]: e.target.value
+      creds: {
+        ...this.state.creds,
+        [e.target.name]: e.target.value
+      }
     });
   };
 
@@ -44,7 +49,8 @@ class SignUp extends React.Component {
 }
 
 mapStateToProps = state => ({
-  loggingIn: state.loggingIn
+  loggingIn: state.loggingIn,
+  error: ''
 });
 
 export default connect(
