@@ -12,7 +12,15 @@ const initialState = {
     fetching: false,
     deletingTab: false,
     updatingTab: false,
-    tabs: [],
+    tabs: [
+        {
+            description: 'This is a dummy description',
+            title: 'This is a dummy Title',
+            icon: 'TEST',
+            url: 'www.google.com',
+        }
+
+    ],
     addingTab: false
 }
 

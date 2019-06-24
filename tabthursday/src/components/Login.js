@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'http2';
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
   state = {
@@ -30,7 +30,7 @@ class Login extends React.Component {
         <form>
           <input
             type='email'
-            palceholder='Email'
+            placeholder='Email'
             name='email'
             onChange={this.handleChanges}
             value={this.state.email}
