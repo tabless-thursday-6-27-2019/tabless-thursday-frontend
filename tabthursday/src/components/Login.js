@@ -10,7 +10,6 @@ class Login extends React.Component {
     }
   };
 
-
   handleChanges = e => {
     e.preventDefault();
     this.setState({
