@@ -24,100 +24,97 @@ export const UPDATE_START = 'UPDATE_START';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const UPDATE_FAIL = 'UPDATE_FAIL';
 
+//SIGN UP
+export const signUp = creds => dispatch => {
+  dispatch({ type: SIGNUP_START });
+  return axiosWithAuth()
+    .post('/login', creds) //endpoint?
+    .then(res => {
+      console.log(res.data);
+      localStorage.setItem('token', res.data.token);
+      dispatch({ type: SIGNUP_SUCCESS });
+      return true;
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({ type: SIGNUP_FAIL });
+    });
+};
 
 //LOGIN
-export const login = creds => dispatch =>{
-    dispatch({ type: SIGNUP_START });
-    return axiosWithAuth()
-        .post('/login', creds) //endpoint?
-        .then(res => {
-            console.log(res.data);
-            localStorage.setItem('token', res.data.token) 
-            dispatch({ type: SIGNUP_SUCCESS });
-            return true;
-        })
-        .catch(err => {
-            console.log(err.response);
-            dispatch({ type: SIGNUP_FAIL })
-        })
-}
-
-//LOGIN
-export const login = creds => dispatch =>{
-    dispatch({ type: LOGIN_START });
-    return axiosWithAuth()
-        .post('/login', creds) //endpoint?
-        .then(res => {
-            console.log(res.data);
-            localStorage.setItem('token', res.data.token) 
-            dispatch({ type: LOGIN_SUCCESS });
-            return true;
-        })
-        .catch(err => {
-            console.log(err.response);
-            dispatch({ type: LOGIN_FAIL })
-        })
-}
-
+export const login = creds => dispatch => {
+  dispatch({ type: LOGIN_START });
+  return axiosWithAuth()
+    .post('/login', creds) //endpoint?
+    .then(res => {
+      console.log(res.data);
+      localStorage.setItem('token', res.data.token);
+      dispatch({ type: LOGIN_SUCCESS });
+      return true;
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({ type: LOGIN_FAIL });
+    });
+};
 
 //GET
 export const getData = () => dispatch => {
-    dispatch({ type: FETCH_START });
-    axiosWithAuth()
+  dispatch({ type: FETCH_START });
+  axiosWithAuth()
     .get('/register') //get endpoint here
     .then(res => {
-        console.log(res);
-        console.log('res.data', res.data)
-        dispatch({ type: FETCH_SUCCESS, payload: res.data})
+      console.log(res);
+      console.log('res.data', res.data);
+      dispatch({ type: FETCH_SUCCESS, payload: res.data });
     })
-    .catch( err => {
-        console.log(err.response);
-        dispatch({ type: FETCH_FAIL, payload: err.response }) 
-    })
-}
+    .catch(err => {
+      console.log(err.response);
+      dispatch({ type: FETCH_FAIL, payload: err.response });
+    });
+};
 
 //POST
-export const addTab = (tab) => dispatch => {
-    dispatch({ type: ADD_START });
-    axiosWithAuth()
+export const addTab = tab => dispatch => {
+  dispatch({ type: ADD_START });
+  axiosWithAuth()
     .post('', tab) //Post Endpoint
     .then(res => {
-        console.log('addFriend', res);
-        dispatch({ type: ADD_SUCCESS, payload: res.data });
+      console.log('addFriend', res);
+      dispatch({ type: ADD_SUCCESS, payload: res.data });
     })
     .catch(err => {
-        console.log(err.response);
-        dispatch({ type: ADD_FAIL, payload: err.response })
-    })
-
-}
+      console.log(err.response);
+      dispatch({ type: ADD_FAIL, payload: err.response });
+    });
+};
 
 //DELETE
-export const deleteTab = (id) => dispatch =>{
-    dispatch({ type: DELETE_START });
-    axiosWithAuth()
+export const deleteTab = id => dispatch => {
+  dispatch({ type: DELETE_START });
+  axiosWithAuth()
     .delete(`/${id}`) //Delete endpoint
     .then(res => {
-        console.log('delete', res);
-        dispatch({ type: DELETE_SUCCESS, payload: res.data });
+      console.log('delete', res);
+      dispatch({ type: DELETE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-        console.log('delete error', err.response);
-        dispatch({ type: DELETE_FAIL, payload: err.response })
-    })
-}
+      console.log('delete error', err.response);
+      dispatch({ type: DELETE_FAIL, payload: err.response });
+    });
+};
 
 //PUT
 export const updateTab = () => dispatch => {
-    dispatch({ type: UPDATE_START });
-    axiosWithAuth()
-    .put()//PUT ENDPOINT
+  dispatch({ type: UPDATE_START });
+  axiosWithAuth()
+    .put() //PUT ENDPOINT
     .then(res => {
-        console.log('updateTab', res);
-        dispatch({ tpye: UPDATE_SUCCESS, payload: res.data })
-    }) 
-    .catch(err => {
-        console.log('update error', err.response);
-        dispatch({ type: UPDATE_FAIL, payload: err.response })
+      console.log('updateTab', res);
+      dispatch({ tpye: UPDATE_SUCCESS, payload: res.data });
     })
-}
+    .catch(err => {
+      console.log('update error', err.response);
+      dispatch({ type: UPDATE_FAIL, payload: err.response });
+    });
+};
