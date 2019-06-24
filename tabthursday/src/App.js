@@ -6,7 +6,7 @@ import NavBar from './components/navBar';
 import Login from './components/Login';
 
 import './App.css';
-import SignUp from './components/signUp';
+import SignUp from './components/SignUp';
 import TabsList from './components/TabsList';
 
 //Navlink route, login route
