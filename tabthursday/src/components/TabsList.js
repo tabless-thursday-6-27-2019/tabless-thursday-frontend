@@ -14,7 +14,7 @@ class TabsList extends React.Component {
       <div>
         <h1>showing tabs bitchezzzzz</h1>
         {this.state.tabs.map(tab => {
-          <h4>{tab.name}</h4>;
+          return <h4>{tab.name}</h4>;
         })}
       </div>
     );
