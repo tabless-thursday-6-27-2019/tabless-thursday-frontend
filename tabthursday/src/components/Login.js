@@ -9,6 +9,10 @@ class Login extends React.Component {
         }
     }
 
+
+    login(){
+        //use login from aciton here
+    }
     redner(){
         return(
             <div className = 'login'>
