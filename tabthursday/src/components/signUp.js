@@ -19,7 +19,7 @@ class SignUp extends React.Component {
     });
   };
 
-  login = e => {
+  signUp = e => {
     e.preventDefault();
   };
 

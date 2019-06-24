@@ -6,6 +6,7 @@ import NavBar from './components/navBar';
 import Login from './components/Login';
 
 import './App.css';
+import signUp from './components/signUp';
 
 //Navlink route, login route
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <div className='App'>
       <NavBar />
       <Route path='/login' component={Login} />
+      <Route path='/signup' component={SignUp} />
     </div>
   );
 }
