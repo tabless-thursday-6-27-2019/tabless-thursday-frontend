@@ -6,7 +6,8 @@ import NavBar from './components/navBar';
 import Login from './components/Login';
 
 import './App.css';
-import signUp from './components/signUp';
+import SignUp from './components/signUp';
+import TabsList from './components/TabsList';
 
 //Navlink route, login route
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <NavBar />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
+      <Route path='/home' component={TabsList} />
     </div>
   );
 }

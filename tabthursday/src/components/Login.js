@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'http2';
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
   state = {
