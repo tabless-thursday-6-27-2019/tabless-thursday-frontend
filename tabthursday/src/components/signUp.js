@@ -48,7 +48,7 @@ class SignUp extends React.Component {
   }
 }
 
-mapStateToProps = state => ({
+const mapStateToProps = state => ({
   loggingIn: state.loggingIn,
   error: ''
 });
