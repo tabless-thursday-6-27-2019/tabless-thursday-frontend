@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tab from './Tab';
 import { getData } from '../actions';
 
+import Tab from './Tab';
+import TabsByCategory from './TabsByCategory';
 class TabsList extends React.Component {
   componentDidMount() {
     this.props.getData();
@@ -14,13 +15,12 @@ class TabsList extends React.Component {
     return (
       <div>
         <h1>showing tabs bitchezzzzz</h1>
-        {this.props.categories.forEach(category => {
-          this.props.tabs.filter(tab => {
-            if (tab.category === category) {
-              console.log(tab, category, tab.category);
-              return <Tab tab={tab} />;
-            }
-          });
+        {this.props.categories.map(category => {
+          const filteredTabs = this.props.tabs.filter(
+            tab => tab.category === category
+          );
+          console.log(filteredTabs);
+          return <TabsByCategory category={category} tabs={filteredTabs} />;
         })}
       </div>
     );
