@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import './login.scss';
+
 class Login extends React.Component {
   state = {
     creds: {
@@ -27,6 +29,10 @@ class Login extends React.Component {
     return (
       <div className='login'>
         <form>
+        <h3>Log In</h3>
+        <p>
+        Don't have an account? <Link to='/signup'>Sign up!</Link>
+      </p>
           <input
             type='email'
             placeholder='Email'
@@ -41,11 +47,14 @@ class Login extends React.Component {
             onChange={this.handleChanges}
             value={this.state.password}
           />
-          <button>Login</button>
-          <p>
-            Don't have an account? <Link to='/signup'>Click Here</Link>
-          </p>
+          <button>Log In</button>
+         
         </form>
+        <div className = 'login-image'>
+            <h2>Tabless Thursdays</h2>
+            <h4>Best Tab Management</h4>
+            <img src = '' alt = 'computer'></img>
+        </div>
       </div>
     );
   }
