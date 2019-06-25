@@ -28,7 +28,7 @@ export const UPDATE_FAIL = 'UPDATE_FAIL';
 export const signUp = creds => dispatch => {
   dispatch({ type: SIGNUP_START });
   return axiosWithAuth()
-    .post('/login', creds) //endpoint?
+    .post('/register', creds) //endpoint?
     .then(res => {
       console.log(res.data);
       localStorage.setItem('token', res.data.token);
@@ -36,7 +36,7 @@ export const signUp = creds => dispatch => {
       return true;
     })
     .catch(err => {
-      console.log(err.response);
+      console.log(err);
       dispatch({ type: SIGNUP_FAIL });
     });
 };
@@ -62,7 +62,7 @@ export const login = creds => dispatch => {
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_START });
   axiosWithAuth()
-    .get('/register') //get endpoint here
+    .get('/tabs') //get endpoint here
     .then(res => {
       console.log(res);
       console.log('res.data', res.data);

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { login } from '../actions';
 
 import './login.scss';
 
 class Login extends React.Component {
   state = {
     creds: {
-      username: '',
+      email: '',
       password: ''
     }
   };
@@ -24,15 +25,18 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    this.props.login(this.state.creds).then(res => {
+      res && this.props.history.push('/home');
+    });
   };
   render() {
     return (
       <div className='login'>
-        <form>
-        <h3>Log In</h3>
-        <p>
-        Don't have an account? <Link to='/signup'>Sign up!</Link>
-      </p>
+            <form onSubmit={this.login}>
+            <h3>Log In</h3>
+            <p>
+            Don't have an account? <Link to='/signup'>Sign up!</Link>
+            </p>
           <input
             type='email'
             placeholder='Email'
@@ -61,7 +65,6 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isLoggingIn: state.isLoggingIn,
     error: state.error
@@ -70,5 +73,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { login }
 )(Login);
