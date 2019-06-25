@@ -30,16 +30,22 @@ const initialState = {
       description: 'This is a dummy description',
       title: 'This is a dummy Title',
       icon: 'TEST',
-      url: 'www.google.com'
+      url: 'www.google.com',
+      category: 'Resources',
+      id: 1
     },
     {
       description: 'This is a fake',
       title: 'This is ANOTHER dummy Title',
       icon: 'TESTING',
-      url: 'www.googles.com'
+      url: 'www.googles.com',
+      category: 'Deployments',
+      id: 2
     }
   ],
-  addingTab: false
+  categories: ['Resources', 'Deployments', 'Repos', 'Training Kit', 'Lessons'],
+  addingTab: false,
+  email: ''
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -55,7 +61,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         error: '',
-        isLoggingIn: false
+        isLoggingIn: false,
+        email: action.payload
       };
     case SIGNUP_FAIL:
       return {

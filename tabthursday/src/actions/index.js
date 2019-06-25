@@ -31,8 +31,7 @@ export const signUp = creds => dispatch => {
     .post('/register', creds) //endpoint?
     .then(res => {
       console.log(res.data);
-      localStorage.setItem('token', res.data.token);
-      dispatch({ type: SIGNUP_SUCCESS });
+      dispatch({ type: SIGNUP_SUCCESS, payload: creds.email });
       return true;
     })
     .catch(err => {
