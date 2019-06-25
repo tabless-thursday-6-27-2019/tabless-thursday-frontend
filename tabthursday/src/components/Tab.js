@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Tab = props => {
-  console.log('From tab component', props.tab);
   return (
     <div className='tab-container'>
       <p>{props.tab.icon}</p>
       <div className='tab-info'>
-        <Link to={`/home/${id}`}>
+        <Link to={`/home/${props.tab.id}`}>
           <p>{props.tab.title}</p>
         </Link>
         <a href={props.tab.url} target='_blank'>

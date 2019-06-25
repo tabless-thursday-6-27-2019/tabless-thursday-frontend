@@ -8,7 +8,7 @@ class AddForm extends React.Component {
       title: '',
       description: '',
       url: '',
-      category: ''
+      category: 'Resources'
     }
   };
 
@@ -52,9 +52,15 @@ class AddForm extends React.Component {
             onChange={this.handleChanges}
             name='url'
           />
-          <select value={this.state.tab.category}>
+          <select
+            value={this.state.tab.category}
+            onChange={this.handleChanges}
+            name='category'
+          >
             {this.props.categories.map(category => (
-              <option value={category}>{category}</option>
+              <option value={category} key={category}>
+                {category}
+              </option>
             ))}
           </select>
           <button>Submit</button>
@@ -63,6 +69,10 @@ class AddForm extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  categories: state.categories
+});
 
 export default connect(
   mapStateToProps,
