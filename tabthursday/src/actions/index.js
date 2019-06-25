@@ -62,7 +62,7 @@ export const login = creds => dispatch => {
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_START });
   axiosWithAuth()
-    .get('/register') //get endpoint here
+    .get('/tabs') //get endpoint here
     .then(res => {
       console.log(res);
       console.log('res.data', res.data);

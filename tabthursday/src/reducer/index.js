@@ -31,6 +31,12 @@ const initialState = {
       title: 'This is a dummy Title',
       icon: 'TEST',
       url: 'www.google.com'
+    },
+    {
+      description: 'This is a fake',
+      title: 'This is ANOTHER dummy Title',
+      icon: 'TESTING',
+      url: 'www.googles.com'
     }
   ],
   addingTab: false

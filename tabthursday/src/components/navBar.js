@@ -23,12 +23,17 @@ const NavBar = props => {
     );
   } else {
     return (
-      <div className='nav-bar loggedin'>
+      <div className='nav-bar-loggedin'>
         <div className='container-left'>
           <img src='../assets/LockupYellow.png' alt='Tabless Logo' />
-          <input name='search' type='text' />
+          <input
+            className='searchbar'
+            name='search'
+            type='text'
+            placeholder='Search'
+          />
         </div>
-        <div className='continer-right'>
+        <div className='container-right'>
           <NavLink exact to='/'>
             Home
           </NavLink>

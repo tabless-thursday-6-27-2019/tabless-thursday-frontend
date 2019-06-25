@@ -22,12 +22,8 @@ class SignUp extends React.Component {
 
   signUp = e => {
     e.preventDefault();
-    this.props.signUp(this.state.creds);
-    this.setState({
-      creds: {
-        email: '',
-        password: ''
-      }
+    this.props.signUp(this.state.creds).then(res => {
+      res && this.props.history.push('/home');
     });
   };
 

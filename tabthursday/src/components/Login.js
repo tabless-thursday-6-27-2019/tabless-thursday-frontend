@@ -23,12 +23,8 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    this.props.login(this.state.creds);
-    this.setState({
-      creds: {
-        email: '',
-        password: ''
-      }
+    this.props.login(this.state.creds).then(res => {
+      res && this.props.history.push('/home');
     });
   };
   render() {
