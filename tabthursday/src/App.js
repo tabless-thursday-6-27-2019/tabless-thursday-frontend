@@ -8,6 +8,7 @@ import Login from './components/Login';
 import './App.css';
 import SignUp from './components/signUp';
 import TabsList from './components/TabsList';
+import TabCard from './components/TabCard';
 
 //Navlink route, login route
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
       <Route path='/home' component={TabsList} />
+      <Route path='/home/:id' component={TabCard} />
     </div>
   );
 }

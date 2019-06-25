@@ -8,9 +8,7 @@ class TabsList extends React.Component {
   componentDidMount() {
     this.props.getData();
   }
-  addTab = e => {
-    e.preventDefault();
-  };
+
   render() {
     return (
       <div>
@@ -19,7 +17,6 @@ class TabsList extends React.Component {
           const filteredTabs = this.props.tabs.filter(
             tab => tab.category === category
           );
-          console.log(filteredTabs);
           return <TabsByCategory category={category} tabs={filteredTabs} />;
         })}
       </div>
