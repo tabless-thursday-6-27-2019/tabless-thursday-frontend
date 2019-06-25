@@ -63,8 +63,6 @@ export const getData = () => dispatch => {
   axiosWithAuth()
     .get('/tabs') //get endpoint here
     .then(res => {
-      console.log(res);
-      console.log('res.data', res.data);
       dispatch({ type: FETCH_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -79,11 +77,10 @@ export const addTab = tab => dispatch => {
   axiosWithAuth()
     .post('/tabs', tab) //Post Endpoint
     .then(res => {
-      console.log('addFriend', res);
       dispatch({ type: ADD_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response);
+      console.log('addFail', err.response);
       dispatch({ type: ADD_FAIL, payload: err.response });
     });
 };
@@ -104,10 +101,10 @@ export const deleteTab = id => dispatch => {
 };
 
 //PUT
-export const updateTab = () => dispatch => {
+export const updateTab = tab => dispatch => {
   dispatch({ type: UPDATE_START });
   axiosWithAuth()
-    .put() //PUT ENDPOINT
+    .put(`/tabs/${tab.id}`, tab) //PUT ENDPOINT
     .then(res => {
       console.log('updateTab', res);
       dispatch({ tpye: UPDATE_SUCCESS, payload: res.data });

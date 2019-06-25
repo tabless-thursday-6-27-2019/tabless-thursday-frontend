@@ -1,38 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tab from './Tab';
-import { getData } from '../actions';
+import { getData, updateTab } from '../actions';
 
+import Tab from './Tab';
+import TabsByCategory from './TabsByCategory';
 class TabsList extends React.Component {
+  state = {
+    activeTab: null
+  };
+
   componentDidMount() {
     this.props.getData();
   }
-  addTab = e => {
-    e.preventDefault();
-  };
+
   render() {
-    return (
-      <div>
-        <h1>showing tabs bitchezzzzz</h1>
-        {this.props.categories.forEach(category => {
-          this.props.tabs.filter(tab => {
-            if (tab.category === category) {
-              console.log(tab, category, tab.category);
-              return <Tab tab={tab} />;
-            }
-          });
-        })}
-      </div>
-    );
+    if (this.props.fetching) {
+      return <h1>Loading Tabs</h1>;
+    } else {
+      return (
+        <div>
+          <h1>showing tabs bitchezzzzz</h1>
+          {this.props.categories.map(category => {
+            const filteredTabs = this.props.tabs.filter(
+              tab => tab.category === category
+            );
+            return <TabsByCategory category={category} tabs={filteredTabs} />;
+          })}
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
   tabs: state.tabs,
-  categories: state.categories
+  categories: state.categories,
+  fetching: state.fetching
 });
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, updateTab }
 )(TabsList);
