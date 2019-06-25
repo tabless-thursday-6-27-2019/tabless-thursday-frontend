@@ -23,7 +23,7 @@ class SignUp extends React.Component {
   signUp = e => {
     e.preventDefault();
     this.props.signUp(this.state.creds).then(res => {
-      res && this.props.history.push('/home');
+      res && this.props.history.push('/login');
     });
   };
 

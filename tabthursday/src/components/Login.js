@@ -13,6 +13,14 @@ class Login extends React.Component {
     }
   };
 
+  componentDidMount() {
+    this.props.email &&
+      this.setState({
+        creds: {
+          email: this.props.email
+        }
+      });
+  }
   handleChanges = e => {
     e.preventDefault();
     this.setState({
@@ -67,7 +75,8 @@ class Login extends React.Component {
 const mapStateToProps = state => {
   return {
     isLoggingIn: state.isLoggingIn,
-    error: state.error
+    error: state.error,
+    email: state.email
   };
 };
 

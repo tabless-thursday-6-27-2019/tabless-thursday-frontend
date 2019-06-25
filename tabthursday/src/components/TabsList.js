@@ -4,9 +4,6 @@ import Tab from './Tab';
 import { getData } from '../actions';
 
 class TabsList extends React.Component {
-  state = {
-    tabs: []
-  };
   componentDidMount() {
     this.props.getData();
   }
@@ -17,14 +14,13 @@ class TabsList extends React.Component {
     return (
       <div>
         <h1>showing tabs bitchezzzzz</h1>
-
-        {this.props.tabs.map(tab => {
-          return(
-            <Tab 
-              tab = {tab}
-            />
-          )
-
+        {this.props.categories.forEach(category => {
+          this.props.tabs.filter(tab => {
+            if (tab.category === category) {
+              console.log(tab, category, tab.category);
+              return <Tab tab={tab} />;
+            }
+          });
         })}
       </div>
     );
@@ -32,9 +28,8 @@ class TabsList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tabs: state.tabs
-
-  
+  tabs: state.tabs,
+  categories: state.categories
 });
 
 export default connect(

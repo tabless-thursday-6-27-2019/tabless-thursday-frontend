@@ -7,7 +7,7 @@ const axiosWithAuth = () => {
     headers: {
       Authorization: token
     },
-    baseURL: 'https://tabless-thursday-be.herokuapp.com/api' //CHANGE BASE URL
+    baseURL: 'https://tabless-thursday-be.herokuapp.com' //CHANGE BASE URL
   });
 };
 
