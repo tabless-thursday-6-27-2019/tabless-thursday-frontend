@@ -21,11 +21,16 @@ class UpdateForm extends React.Component {
     });
   };
 
+  updateTab = e => {
+    e.preventDefault();
+    this.props.updateTab(this.state.activeTab);
+    this.props.history.push('/home');
+  };
   render() {
     return (
       <div className='update-form-container'>
         <h4>Update Tab</h4>
-        <form onSubmit={() => this.props.updateTab(this.state.activeTab)}>
+        <form onSubmit={e => this.updateTab(e)}>
           <input
             type='text'
             placeholder='Enter Title'
@@ -58,6 +63,7 @@ class UpdateForm extends React.Component {
               </option>
             ))}
           </select>
+          <button>Submit</button>
         </form>
       </div>
     );

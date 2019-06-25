@@ -8,7 +8,7 @@ class AddForm extends React.Component {
       title: '',
       description: '',
       url: '',
-      category: 'Resources'
+      category: this.props.location.state.category
     }
   };
 
@@ -24,9 +24,11 @@ class AddForm extends React.Component {
   addTab = e => {
     e.preventDefault();
     this.props.addTab(this.state.tab);
+    this.props.history.push('/home');
   };
 
   render() {
+    console.log(this.props.location.state);
     return (
       <div className='add-form'>
         <form onSubmit={this.addTab}>
@@ -78,3 +80,6 @@ export default connect(
   mapStateToProps,
   { addTab }
 )(AddForm);
+
+//It would be cool if:
+//The dropdown was already on the category that you chose to crea

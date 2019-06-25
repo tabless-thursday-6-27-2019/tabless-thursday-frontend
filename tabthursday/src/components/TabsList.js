@@ -14,7 +14,7 @@ class TabsList extends React.Component {
   }
 
   render() {
-    if (!this.props.tabs) {
+    if (this.props.fetching) {
       return <h1>Loading Tabs</h1>;
     } else {
       return (
@@ -34,7 +34,8 @@ class TabsList extends React.Component {
 
 const mapStateToProps = state => ({
   tabs: state.tabs,
-  categories: state.categories
+  categories: state.categories,
+  fetching: state.fetching
 });
 
 export default connect(

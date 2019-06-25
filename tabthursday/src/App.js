@@ -29,7 +29,7 @@ class App extends React.Component {
   deleteTab = (e, id) => {
     e.preventDefault();
     this.props.deleteTab(id);
-    this.props.history.push('/');
+    this.props.history.push('/home');
   };
 
   // updateTab = (e, tab) => {

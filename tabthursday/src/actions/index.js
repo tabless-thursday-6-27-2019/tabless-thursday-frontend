@@ -63,8 +63,6 @@ export const getData = () => dispatch => {
   axiosWithAuth()
     .get('/tabs') //get endpoint here
     .then(res => {
-      console.log(res);
-      console.log('res.data', res.data);
       dispatch({ type: FETCH_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -75,12 +73,10 @@ export const getData = () => dispatch => {
 
 //POST
 export const addTab = tab => dispatch => {
-  console.log(tab);
   dispatch({ type: ADD_START });
   axiosWithAuth()
     .post('/tabs', tab) //Post Endpoint
     .then(res => {
-      console.log('addFriend', res);
       dispatch({ type: ADD_SUCCESS, payload: res.data });
     })
     .catch(err => {
