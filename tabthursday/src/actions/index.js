@@ -28,7 +28,7 @@ export const UPDATE_FAIL = 'UPDATE_FAIL';
 export const signUp = creds => dispatch => {
   dispatch({ type: SIGNUP_START });
   return axiosWithAuth()
-    .post('/register', creds) //endpoint?
+    .post('/api/register', creds) //endpoint?
     .then(res => {
       console.log(res.data);
       dispatch({ type: SIGNUP_SUCCESS, payload: creds.email });
@@ -44,7 +44,7 @@ export const signUp = creds => dispatch => {
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axiosWithAuth()
-    .post('/login', creds) //endpoint?
+    .post('/api/login', creds) //endpoint?
     .then(res => {
       console.log(res.data);
       localStorage.setItem('token', res.data.token);
@@ -77,7 +77,7 @@ export const getData = () => dispatch => {
 export const addTab = tab => dispatch => {
   dispatch({ type: ADD_START });
   axiosWithAuth()
-    .post('', tab) //Post Endpoint
+    .post('/tabs', tab) //Post Endpoint
     .then(res => {
       console.log('addFriend', res);
       dispatch({ type: ADD_SUCCESS, payload: res.data });
@@ -92,7 +92,7 @@ export const addTab = tab => dispatch => {
 export const deleteTab = id => dispatch => {
   dispatch({ type: DELETE_START });
   axiosWithAuth()
-    .delete(`/${id}`) //Delete endpoint
+    .delete(`/tabs/${id}`) //Delete endpoint
     .then(res => {
       console.log('delete', res);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
