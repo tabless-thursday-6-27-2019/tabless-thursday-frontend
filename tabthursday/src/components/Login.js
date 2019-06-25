@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { login } from '../actions';
 
 class Login extends React.Component {
   state = {
@@ -22,11 +23,15 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    this.props.login(this.state.creds).then(res => {
+      res && this.props.history.push('/home');
+    });
   };
   render() {
     return (
       <div className='login'>
-        <form>
+        <h1>Login</h1>
+        <form onSubmit={this.login}>
           <input
             type='email'
             placeholder='Email'
@@ -52,7 +57,6 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isLoggingIn: state.isLoggingIn,
     error: state.error
@@ -61,5 +65,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { login }
 )(Login);
