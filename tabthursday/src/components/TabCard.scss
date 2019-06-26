@@ -1,0 +1,17 @@
+.tab-card-container {
+  .modal-content {
+    height: 500px;
+    width: 500px;
+    background-color: #1e1e1c;
+    opacity: 0.9;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    .modal-header {
+      border-bottom: 0px;
+      .modal-title {
+        margin: 5px 0 10px 100px;
+      }
+    }
+  }
+}

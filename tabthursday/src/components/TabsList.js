@@ -5,6 +5,9 @@ import Loader from 'react-loader-spinner';
 
 import Tab from './Tab';
 import TabsByCategory from './TabsByCategory';
+
+import './TabsList.scss';
+
 class TabsList extends React.Component {
   state = {
     activeTab: null
@@ -21,8 +24,7 @@ class TabsList extends React.Component {
       );
     } else {
       return (
-        <div>
-          <h1>showing tabs bitchezzzzz</h1>
+        <div className='tabslist-container'>
           {this.props.categories.map(category => {
             const filteredTabs = this.props.tabs.filter(
               tab => tab.category === category
