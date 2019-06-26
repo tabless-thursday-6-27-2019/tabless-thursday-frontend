@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getData, updateTab } from '../actions';
+import Loader from 'react-loader-spinner';
 
 import Tab from './Tab';
 import TabsByCategory from './TabsByCategory';
@@ -15,7 +16,9 @@ class TabsList extends React.Component {
 
   render() {
     if (this.props.fetching) {
-      return <h1>Loading Tabs</h1>;
+      return (
+        <Loader type='TailSpin' color='#e4be4d' height={100} width={100} />
+      );
     } else {
       return (
         <div>
@@ -24,7 +27,13 @@ class TabsList extends React.Component {
             const filteredTabs = this.props.tabs.filter(
               tab => tab.category === category
             );
-            return <TabsByCategory category={category} tabs={filteredTabs} />;
+            return (
+              <TabsByCategory
+                category={category}
+                tabs={filteredTabs}
+                key={category}
+              />
+            );
           })}
         </div>
       );

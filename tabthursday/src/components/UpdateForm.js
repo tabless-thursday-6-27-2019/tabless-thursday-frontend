@@ -23,8 +23,9 @@ class UpdateForm extends React.Component {
 
   updateTab = e => {
     e.preventDefault();
-    this.props.updateTab(this.state.activeTab);
-    this.props.history.push('/home');
+    this.props.updateTab(this.state.activeTab).then(res => {
+      res && this.props.history.push('/home');
+    });
   };
   render() {
     return (

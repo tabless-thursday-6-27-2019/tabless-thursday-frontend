@@ -9,7 +9,7 @@ const Tab = props => {
         <Link to={`/home/${props.tab.id}`}>
           <p>{props.tab.title}</p>
         </Link>
-        <a href={props.tab.url} target='_blank'>
+        <a href={props.tab.url} target='_blank' rel='noopener noreferrer'>
           <p>{props.tab.url}</p>
         </a>
       </div>
