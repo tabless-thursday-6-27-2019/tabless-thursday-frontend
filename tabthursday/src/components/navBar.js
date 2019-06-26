@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 import './navBar.scss';
+import NavBarLogo from '../assets/LockupYellow.png'; 
 
 const NavBar = props => {
   const token = localStorage.getItem('token');
@@ -9,7 +10,7 @@ const NavBar = props => {
     return (
       <div className='nav-bar'>
         <div className='container-left'>
-          <img src='.././assets/LockupYellow.png' alt='Tabless Logo' />
+          <img src= {NavBarLogo} alt='Tabless Logo' />
         </div>
         <div className='container-right'>
           <NavLink className='login' to='/login'>
@@ -25,7 +26,7 @@ const NavBar = props => {
     return (
       <div className='nav-bar-loggedin'>
         <div className='container-left'>
-          <img src='../assets/LockupYellow.png' alt='Tabless Logo' />
+          <img src= {NavBarLogo} alt='Tabless Logo' />
           <input
             className='searchbar'
             name='search'

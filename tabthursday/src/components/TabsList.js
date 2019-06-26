@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { getData, updateTab } from '../actions';
 import Loader from 'react-loader-spinner';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 import TabsByCategory from './TabsByCategory';
 
 import './TabsList.scss';
@@ -53,3 +57,5 @@ export default connect(
   mapStateToProps,
   { getData, updateTab }
 )(TabsList);
+
+
