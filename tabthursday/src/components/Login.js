@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { login } from '../actions';
 
 import './login.scss';
+import LogInIMG from '../assets/LogInIMG.png' 
+
 
 class Login extends React.Component {
   state = {
@@ -41,7 +43,7 @@ class Login extends React.Component {
     return (
       <div className='login'>
             <form onSubmit={this.login}>
-            <h3>Log In</h3>
+            <h1>Log In</h1>
             <p>
             Don't have an account? <Link to='/signup'>Sign up!</Link>
             </p>
@@ -59,13 +61,19 @@ class Login extends React.Component {
             onChange={this.handleChanges}
             value={this.state.password}
           />
+          <p className = 'forgot'>Forgot Password?</p>
+          {
+            this.props.error && <p>Email or password are not recognized.</p>
+          }
           <button>Log In</button>
          
         </form>
         <div className = 'login-image'>
-            <h2>Tabless Thursdays</h2>
-            <h4>Best Tab Management</h4>
-            <img src = '' alt = 'computer'></img>
+        <div className = 'text-on-top'>
+            <h1>Tabless Thursdays</h1>
+            <h2>Best Tab Management</h2>
+        </div>
+            <img src = {LogInIMG} alt = 'computer'></img>
         </div>
       </div>
     );

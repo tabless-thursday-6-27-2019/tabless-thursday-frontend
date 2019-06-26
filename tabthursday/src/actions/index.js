@@ -53,7 +53,7 @@ export const login = creds => dispatch => {
     })
     .catch(err => {
       console.log(err.response);
-      dispatch({ type: LOGIN_FAIL });
+      dispatch({ type: LOGIN_FAIL, payload: err.response });
     });
 };
 

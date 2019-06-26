@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signUp } from '../actions';
+import { Link } from 'react-router-dom';
+
+
+import './signUp.scss';
+import SignUpImg from '../assets/SignUpIMG.png' 
 
 class SignUp extends React.Component {
   state = {
@@ -31,7 +36,8 @@ class SignUp extends React.Component {
     return (
       <div className='signup-form'>
         <form onSubmit={this.signUp}>
-          <h1>Sign Up</h1>
+          <h1>Create Your Account</h1>
+          <p className = 'have-account'>Already have an account? <Link to = '/login'>Log In</Link></p>
           <input
             type='email'
             placeholder='Email'
@@ -46,8 +52,16 @@ class SignUp extends React.Component {
             onChange={this.handleChanges}
             name='password'
           />
-          <button>Submit</button>
+          <button>Sign Up!</button>
         </form>
+        <div className = 'sign-up-img'>
+        <div className = 'text-on-top'>
+          <h1>Tabless Thursdays</h1>
+          <h2>Best Tab Management</h2>
+        </div>
+          <img src = {SignUpImg} alt = 'computer'></img>
+        
+        </div>
       </div>
     );
   }
