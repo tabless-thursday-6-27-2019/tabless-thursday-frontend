@@ -12,6 +12,7 @@ import TabCard from './components/TabCard';
 import UpdateForm from './components/UpdateForm';
 import { deleteTab } from './actions';
 import AddForm from './components/AddForm';
+import TabCardModal from './components/TabCardModal';
 
 class App extends React.Component {
   state = {
@@ -32,22 +33,18 @@ class App extends React.Component {
     this.props.history.push('/home');
   };
 
-  // updateTab = (e, tab) => {
-  //   e.preventDefault();
-  //   updateTab(tab);
-  // };
-
   render() {
+    // console.log(logTabsForWindows());
     return (
       <div className='App'>
         <NavBar />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
-        <Route exact path='/home' component={TabsList} />
+        <Route path='/home' component={TabsList} />
         <Route
           path='/home/:id'
           render={props => (
-            <TabCard
+            <TabCardModal
               {...props}
               setUpdateForm={this.setUpdateForm}
               deleteTab={this.deleteTab}
@@ -79,15 +76,3 @@ export default connect(
   mapStateToProps,
   { deleteTab }
 )(withRouter(App));
-
-// function App() {
-//   return (
-//     <div className='App'>
-//       <NavBar />
-//       <Route path='/login' component={Login} />
-//       <Route path='/signup' component={SignUp} />
-//       <Route path='/home' component={TabsList} />
-//       <Route path='/home/:id' component={TabCard} />
-//     </div>
-//   );
-// }

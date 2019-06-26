@@ -31,7 +31,7 @@ const NavBar = props => {
             className='searchbar'
             name='search'
             type='text'
-            placeholder='Search'
+            placeholder='Search Tabs'
           />
         </div>
         <div className='container-right'>
