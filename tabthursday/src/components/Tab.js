@@ -6,7 +6,7 @@ const Tab = props => {
     <div className='tab-container'>
       <p>{props.tab.icon}</p>
       <div className='tab-info'>
-        <Link to={`/home/${props.tab.id}`}>
+        <Link to={`/home/tabs/${props.tab.id}`}>
           <p className='tab-title'>{props.tab.title}</p>
         </Link>
         <a href={props.tab.url} target='_blank' rel='noopener noreferrer'>

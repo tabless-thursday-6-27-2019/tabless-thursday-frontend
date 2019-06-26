@@ -73,6 +73,7 @@ export const getData = () => dispatch => {
 
 //POST
 export const addTab = tab => dispatch => {
+  console.log('from action', tab);
   dispatch({ type: ADD_START });
   return axiosWithAuth()
     .post('/tabs', tab) //Post Endpoint

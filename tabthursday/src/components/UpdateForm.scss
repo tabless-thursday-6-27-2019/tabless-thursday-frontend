@@ -1,8 +1,8 @@
 $dark-yellow: #e4be4d;
 
-.tab-card-container {
+.update-form-container {
   .modal-content {
-    height: 500px;
+    height: 600px;
     width: 500px;
     background-color: #1e1e1c;
     opacity: 0.9;
@@ -28,9 +28,29 @@ $dark-yellow: #e4be4d;
         text-decoration: none;
         color: white;
       }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input {
+          text-decoration: none;
+          height: 40px;
+          width: 70%;
+          margin-bottom: 10px;
+          text-align: center;
+          color: darken($dark-yellow, 10%);
+          //   background: lighten(#5f697a, 10%);
+          // border-bottom: 1px solid darkgrey;
+        }
+        input::placeholder {
+          color: darken($dark-yellow, 10%);
+        }
+      }
     }
     .modal-footer {
       border-top: none;
+      display: flex;
+      justify-content: space-around;
       .cancel-btn {
         font-size: 1.4rem;
         height: 70px;
@@ -38,6 +58,7 @@ $dark-yellow: #e4be4d;
         background-color: #1e1e1c;
         border: 2px solid $dark-yellow;
         color: $dark-yellow;
+        padding-right: 1%; //to space out buttons
         &:hover {
           border-color: rgba(228, 190, 77, 0.5);
         }
@@ -47,15 +68,6 @@ $dark-yellow: #e4be4d;
         height: 70px;
         width: 150px;
         background-color: $dark-yellow;
-        &:hover {
-          background: rgba(228, 190, 77, 0.5);
-        }
-      }
-      .delete-btn {
-        font-size: 1.4rem;
-        height: 70px;
-        width: 150px;
-        background-color: darken($dark-yellow, 15%);
         &:hover {
           background: rgba(228, 190, 77, 0.5);
         }

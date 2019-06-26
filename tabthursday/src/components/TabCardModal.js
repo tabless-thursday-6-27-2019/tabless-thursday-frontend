@@ -25,7 +25,9 @@ class TabCardModal extends React.Component {
     const id = this.props.match.params.id;
     const tab = this.props.tabs.find(tab => `${tab.id}` === id);
     if (!tab) {
+      //   alert('getData triggered inside TabCardModal');
       this.props.getData();
+      console.log('getData from TabCardModal');
       return (
         <Loader type='TailSpin' color='#e4be4d' height={100} width={100} />
       );
@@ -69,12 +71,6 @@ class TabCardModal extends React.Component {
               </Button>
             </ModalFooter>
           </Modal>
-          {/* <h1>TabCard</h1>
-          <p>{tab.title}</p>
-          <p>{tab.description}</p>
-          <p>{tab.url}</p>
-          <button onClick={e => props.setUpdateForm(e, tab)}>Update</button>
-          <button onClick={e => props.deleteTab(e, tab.id)}>Delete Tab</button> */}
         </div>
       );
     }

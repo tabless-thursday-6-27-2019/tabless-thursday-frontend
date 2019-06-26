@@ -14,7 +14,7 @@ class TabsByCategory extends React.Component {
         <Link
           className='new-tab-link'
           to={{
-            pathname: '/new-tab',
+            pathname: '/home/new-tab',
             state: { category: this.props.category }
           }}
         >

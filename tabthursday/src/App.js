@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import NavBar from './components/navBar';
@@ -9,7 +9,7 @@ import './App.css';
 import SignUp from './components/signUp';
 import TabsList from './components/TabsList';
 import UpdateForm from './components/UpdateForm';
-import { deleteTab } from './actions';
+import { deleteTab, getData } from './actions';
 import AddForm from './components/AddForm';
 import TabCardModal from './components/TabCardModal';
 
@@ -20,16 +20,18 @@ class App extends React.Component {
 
   setUpdateForm = (e, tab) => {
     e.preventDefault();
+    console.log(tab);
     this.setState({
       activeTab: tab
     });
-    this.props.history.push('/update-form');
+    this.props.history.push('/home/update-form');
   };
 
   deleteTab = (e, id) => {
     e.preventDefault();
     this.props.deleteTab(id);
     this.props.history.push('/home');
+    this.props.getData();
   };
 
   render() {
@@ -41,7 +43,8 @@ class App extends React.Component {
         <Route path='/signup' component={SignUp} />
         <Route path='/home' component={TabsList} />
         <Route
-          path='/home/:id'
+          exact
+          path='/home/tabs/:id'
           render={props => (
             <TabCardModal
               {...props}
@@ -52,12 +55,13 @@ class App extends React.Component {
           )}
         />
         <Route
-          path='/update-form'
+          exact
+          path='/home/update-form'
           render={props => (
             <UpdateForm {...props} activeTab={this.state.activeTab} />
           )}
         />
-        <Route path='/new-tab' component={AddForm} />
+        <Route path='/home/new-tab' render={props => <AddForm {...props} />} />
       </div>
     );
   }
@@ -73,5 +77,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { deleteTab }
+  { deleteTab, getData }
 )(withRouter(App));
