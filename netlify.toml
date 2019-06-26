@@ -1,0 +1,4 @@
+[build]
+  base = "tabthursday/"
+  publish = "tabthursday/build"
+  command = "yarn build"

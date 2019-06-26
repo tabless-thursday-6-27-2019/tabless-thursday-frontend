@@ -1,62 +1,55 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tab from './Tab';
-import { getData } from '../actions';
+import { getData, updateTab } from '../actions';
+import Loader from 'react-loader-spinner';
 
+import Tab from './Tab';
+import TabsByCategory from './TabsByCategory';
 class TabsList extends React.Component {
+  state = {
+    activeTab: null
+  };
+
   componentDidMount() {
     this.props.getData();
   }
-  addTab = e => {
-    e.preventDefault();
-  };
+
   render() {
-    
-    return (
-      <div>
-        <h1>showing tabs bitchezzzzz</h1>
-        {
-          this.props.tabs.map (tab => {
-            return(
-              <Tab tab = {tab} />
+    if (this.props.fetching) {
+      return (
+        <Loader type='TailSpin' color='#e4be4d' height={100} width={100} />
+      );
+    } else {
+      return (
+        <div>
+          <h1>showing tabs bitchezzzzz</h1>
+          {this.props.categories.map(category => {
+            const filteredTabs = this.props.tabs.filter(
+              tab => tab.category === category
             );
-          })
-        }
-      </div>
-    );
+            return (
+              <TabsByCategory
+                category={category}
+                tabs={filteredTabs}
+                key={category}
+              />
+            );
+          })}
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
   tabs: state.tabs,
-  categories: state.categories
+  categories: state.categories,
+  fetching: state.fetching
 });
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, updateTab }
 )(TabsList);
 
 
-// if (tab.category === category) {
-//   console.log('tab', tab, category, tab.category);
-//   return <Tab tab={tab} />
-// }
-// return<Tab tab = {tab} />
-
-//{
-          
-//   this.props.categories.forEach(category => {
-//   console.log('category foreach', category)
-//   filtered = this.props.tabs.filter(tab => tab.category === category)
-//   filtered.map(tab => {
-//     console.log('TAB' ,tab);
-//     return(
-      
-//     <Tab
-//       tab = {tab}
-//     />
-//     )
-//   })
-  
-// })}

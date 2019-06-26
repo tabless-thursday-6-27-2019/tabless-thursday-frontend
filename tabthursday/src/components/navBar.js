@@ -9,7 +9,7 @@ const NavBar = props => {
     return (
       <div className='nav-bar'>
         <div className='container-left'>
-          <img src='../assets/LockupYellow.png' alt='Tabless Logo' />
+          <img src='.././assets/LockupYellow.png' alt='Tabless Logo' />
         </div>
         <div className='container-right'>
           <NavLink className='login' to='/login'>
@@ -34,7 +34,7 @@ const NavBar = props => {
           />
         </div>
         <div className='container-right'>
-          <NavLink exact to='/'>
+          <NavLink exact to='/home'>
             Home
           </NavLink>
           <Link to='/'>History</Link>

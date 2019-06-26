@@ -25,24 +25,7 @@ const initialState = {
   fetching: false,
   deletingTab: false,
   updatingTab: false,
-  tabs: [
-    {
-      description: 'This is a dummy description',
-      title: 'This is a dummy Title',
-      icon: 'TEST',
-      url: 'www.google.com',
-      category: 'Resources',
-      id: 1
-    },
-    {
-      description: 'This is a fake',
-      title: 'This is ANOTHER dummy Title',
-      icon: 'TESTING',
-      url: 'www.googles.com',
-      category: 'Deployments',
-      id: 2
-    }
-  ],
+  tabs: [],
   categories: ['Resources', 'Deployments', 'Repos', 'Training Kit', 'Lessons'],
   addingTab: false,
   email: ''
@@ -119,6 +102,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         addingTab: false,
         error: null,
+        fetching: true,
         tabs: action.payload
       };
     case ADD_FAIL:
@@ -157,6 +141,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         updatingTab: false,
         error: null,
+        fetching: true,
         tabs: action.payload
       };
     case UPDATE_FAIL:
