@@ -49,6 +49,7 @@ body{
         flex-direction: column;
         align-items: center;
         background: $form-background;
+        padding-top: 4%;
             input{
                 padding: 1%;
                 margin-top: 5px;
@@ -75,6 +76,7 @@ body{
     .text-on-top{
         position: absolute;
         margin-left: 5%;
+        padding-top: 4%;
         h1{
             color: $dark-yellow;
             font-size: $extra-large;

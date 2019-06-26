@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { getData } from '../actions';
-import { Modal } from 'react-bootstrap';
+// import { Modal } from 'react-bootstrap';
 
 import './TabCard.scss';
 
