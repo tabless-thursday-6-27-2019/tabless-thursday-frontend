@@ -1,3 +1,5 @@
+$dark-yellow: #e4be4d;
+
 .tab-card-container {
   .modal-content {
     height: 500px;
@@ -10,7 +12,44 @@
     .modal-header {
       border-bottom: 0px;
       .modal-title {
-        margin: 5px 0 10px 100px;
+        margin: 5px 0 10px 150px;
+      }
+    }
+    .modal-body {
+      text-align: center;
+      h1 {
+        margin: 0 0 30px 0;
+      }
+      h4 {
+        // text-align: left;
+        margin-bottom: 10px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    .modal-footer {
+      border-top: none;
+      .cancel-btn {
+        font-size: 1.4rem;
+        height: 70px;
+        width: 150px;
+        background-color: #1e1e1c;
+        border: 2px solid $dark-yellow;
+        color: $dark-yellow;
+      }
+      .update-btn {
+        font-size: 1.4rem;
+        height: 70px;
+        width: 150px;
+        background-color: $dark-yellow;
+      }
+      .delete-btn {
+        font-size: 1.4rem;
+        height: 70px;
+        width: 150px;
+        background-color: darken($dark-yellow, 15%);
       }
     }
   }

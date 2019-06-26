@@ -42,23 +42,29 @@ class TabCardModal extends React.Component {
               <img src={tabLogo} alt='Tabless Thursday Logo' />
             </ModalHeader>
             <ModalBody>
+              <h1>{tab.title}</h1>
+              <h4>Description</h4>
               <p>{tab.description}</p>
-              <p>{tab.url}</p>{' '}
+              <h4>Tab URL</h4>
+              <a href={tab.url}>{tab.url}</a>
             </ModalBody>
             <ModalFooter>
               <Button
-                color='primary'
+                className='cancel-btn'
+                onClick={e => this.props.history.push('/home')}
+              >
+                Cancel
+              </Button>
+              <Button
+                className='update-btn'
                 onClick={e => this.props.setUpdateForm(e, tab)}
               >
                 Update
               </Button>
               <Button
-                color='secondary'
-                onClick={e => this.props.history.push('/home')}
+                className='delete-btn'
+                onClick={e => this.props.deleteTab(e, tab.id)}
               >
-                Cancel
-              </Button>
-              <Button onClick={e => this.props.deleteTab(e, tab.id)}>
                 Delete Tab
               </Button>
             </ModalFooter>
