@@ -11,17 +11,17 @@ class TabsList extends React.Component {
     e.preventDefault();
   };
   render() {
+    
     return (
       <div>
         <h1>showing tabs bitchezzzzz</h1>
-        {this.props.categories.forEach(category => {
-          this.props.tabs.filter(tab => {
-            if (tab.category === category) {
-              console.log(tab, category, tab.category);
-              return <Tab tab={tab} />;
-            }
-          });
-        })}
+        {
+          this.props.tabs.map (tab => {
+            return(
+              <Tab tab = {tab} />
+            );
+          })
+        }
       </div>
     );
   }
@@ -36,3 +36,27 @@ export default connect(
   mapStateToProps,
   { getData }
 )(TabsList);
+
+
+// if (tab.category === category) {
+//   console.log('tab', tab, category, tab.category);
+//   return <Tab tab={tab} />
+// }
+// return<Tab tab = {tab} />
+
+//{
+          
+//   this.props.categories.forEach(category => {
+//   console.log('category foreach', category)
+//   filtered = this.props.tabs.filter(tab => tab.category === category)
+//   filtered.map(tab => {
+//     console.log('TAB' ,tab);
+//     return(
+      
+//     <Tab
+//       tab = {tab}
+//     />
+//     )
+//   })
+  
+// })}

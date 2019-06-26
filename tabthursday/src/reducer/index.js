@@ -100,6 +100,7 @@ const rootReducer = (state = initialState, action) => {
         fetching: false,
         error: null,
         tabs: action.payload
+        
       };
     case FETCH_FAIL:
       return {
