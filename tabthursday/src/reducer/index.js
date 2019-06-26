@@ -26,14 +26,7 @@ const initialState = {
   deletingTab: false,
   updatingTab: false,
   tabs: [],
-  categories: [
-    'Resources',
-    'Deployments',
-    'Repos',
-    'Training Kit',
-    'Lessons',
-    'Lambda'
-  ],
+  categories: ['Resources', 'Deployments', 'Repos', 'Training Kit', 'Lessons'],
   addingTab: false,
   email: ''
 };
@@ -108,6 +101,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         addingTab: false,
         error: null,
+        fetching: true,
         tabs: action.payload
       };
     case ADD_FAIL:
@@ -146,6 +140,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         updatingTab: false,
         error: null,
+        fetching: true,
         tabs: action.payload
       };
     case UPDATE_FAIL:

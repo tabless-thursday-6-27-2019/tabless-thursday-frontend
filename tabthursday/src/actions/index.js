@@ -74,10 +74,11 @@ export const getData = () => dispatch => {
 //POST
 export const addTab = tab => dispatch => {
   dispatch({ type: ADD_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .post('/tabs', tab) //Post Endpoint
     .then(res => {
       dispatch({ type: ADD_SUCCESS, payload: res.data });
+      return true;
     })
     .catch(err => {
       console.log('addFail', err.response);
@@ -88,11 +89,12 @@ export const addTab = tab => dispatch => {
 //DELETE
 export const deleteTab = id => dispatch => {
   dispatch({ type: DELETE_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .delete(`/tabs/${id}`) //Delete endpoint
     .then(res => {
       console.log('delete', res);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
+      return true;
     })
     .catch(err => {
       console.log('delete error', err.response);
@@ -103,11 +105,12 @@ export const deleteTab = id => dispatch => {
 //PUT
 export const updateTab = tab => dispatch => {
   dispatch({ type: UPDATE_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .put(`/tabs/${tab.id}`, tab) //PUT ENDPOINT
     .then(res => {
       console.log('updateTab', res);
-      dispatch({ tpye: UPDATE_SUCCESS, payload: res.data });
+      dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+      return true;
     })
     .catch(err => {
       console.log('update error', err.response);
