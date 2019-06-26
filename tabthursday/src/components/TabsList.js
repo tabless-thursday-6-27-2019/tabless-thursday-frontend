@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getData, updateTab } from '../actions';
 import Loader from 'react-loader-spinner';
 
-import Tab from './Tab';
+
 import TabsByCategory from './TabsByCategory';
 class TabsList extends React.Component {
   state = {
@@ -51,3 +51,5 @@ export default connect(
   mapStateToProps,
   { getData, updateTab }
 )(TabsList);
+
+
