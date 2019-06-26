@@ -25,7 +25,9 @@ class TabCardModal extends React.Component {
     const id = this.props.match.params.id;
     const tab = this.props.tabs.find(tab => `${tab.id}` === id);
     if (!tab) {
+      //   alert('getData triggered inside TabCardModal');
       this.props.getData();
+      console.log('getData from TabCardModal');
       return (
         <Loader type='TailSpin' color='#e4be4d' height={100} width={100} />
       );
@@ -42,33 +44,33 @@ class TabCardModal extends React.Component {
               <img src={tabLogo} alt='Tabless Thursday Logo' />
             </ModalHeader>
             <ModalBody>
+              <h1>{tab.title}</h1>
+              <h4>Description</h4>
               <p>{tab.description}</p>
-              <p>{tab.url}</p>{' '}
+              <h4>Tab URL</h4>
+              <a href={tab.url}>{tab.url}</a>
             </ModalBody>
             <ModalFooter>
               <Button
-                color='primary'
+                className='cancel-btn'
+                onClick={e => this.props.history.push('/home')}
+              >
+                Cancel
+              </Button>
+              <Button
+                className='update-btn'
                 onClick={e => this.props.setUpdateForm(e, tab)}
               >
                 Update
               </Button>
               <Button
-                color='secondary'
-                onClick={e => this.props.history.push('/home')}
+                className='delete-btn'
+                onClick={e => this.props.deleteTab(e, tab.id)}
               >
-                Cancel
-              </Button>
-              <Button onClick={e => this.props.deleteTab(e, tab.id)}>
                 Delete Tab
               </Button>
             </ModalFooter>
           </Modal>
-          {/* <h1>TabCard</h1>
-          <p>{tab.title}</p>
-          <p>{tab.description}</p>
-          <p>{tab.url}</p>
-          <button onClick={e => props.setUpdateForm(e, tab)}>Update</button>
-          <button onClick={e => props.deleteTab(e, tab.id)}>Delete Tab</button> */}
         </div>
       );
     }

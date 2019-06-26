@@ -102,8 +102,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         addingTab: false,
         error: null,
-        fetching: true,
-        tabs: action.payload
+        tabs: [...state.tabs, action.payload]
       };
     case ADD_FAIL:
       return {
@@ -122,7 +121,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         deletingTab: false,
         error: null,
-        tabs: action.payload
+        tabs: [...state.tabs, action.payload]
       };
     case DELETE_FAIL:
       return {
@@ -142,7 +141,7 @@ const rootReducer = (state = initialState, action) => {
         updatingTab: false,
         error: null,
         fetching: true,
-        tabs: action.payload
+        tabs: [...state.tabs, action.payload]
       };
     case UPDATE_FAIL:
       return {

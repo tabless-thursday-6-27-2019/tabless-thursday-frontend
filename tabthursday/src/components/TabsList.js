@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { getData, updateTab } from '../actions';
 import Loader from 'react-loader-spinner';
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 import TabsByCategory from './TabsByCategory';
 
 import './TabsList.scss';
@@ -14,6 +17,7 @@ class TabsList extends React.Component {
   };
 
   componentDidMount() {
+    // alert('CDM triggered in TabsList');
     this.props.getData();
   }
 
