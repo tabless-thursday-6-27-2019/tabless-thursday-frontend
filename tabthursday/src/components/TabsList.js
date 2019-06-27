@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { getData, updateTab } from '../actions';
 import Loader from 'react-loader-spinner';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 import TabsByCategory from './TabsByCategory';
 
 import './TabsList.scss';
@@ -25,6 +21,23 @@ class TabsList extends React.Component {
     if (this.props.fetching) {
       return (
         <Loader type='TailSpin' color='#e4be4d' height={100} width={100} />
+      );
+    } else if (this.props.filteredTabs) {
+      return (
+        <div className='tabslist-container'>
+          {this.props.categories.map(category => {
+            const filteredTabs = this.props.filteredTabs.filter(
+              tab => tab.category === category
+            );
+            return (
+              <TabsByCategory
+                category={category}
+                tabs={filteredTabs}
+                key={category}
+              />
+            );
+          })}
+        </div>
       );
     } else {
       return (
@@ -50,12 +63,11 @@ class TabsList extends React.Component {
 const mapStateToProps = state => ({
   tabs: state.tabs,
   categories: state.categories,
-  fetching: state.fetching
+  fetching: state.fetching,
+  filteredTabs: state.filteredTabs
 });
 
 export default connect(
   mapStateToProps,
   { getData, updateTab }
 )(TabsList);
-
-
