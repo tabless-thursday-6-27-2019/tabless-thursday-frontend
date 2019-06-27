@@ -8,10 +8,6 @@ import Login from './components/Login';
 import './App.css';
 import SignUp from './components/signUp';
 import TabsList from './components/TabsList';
-<<<<<<< HEAD
-=======
-// import TabCard from './components/TabCard';
->>>>>>> master
 import UpdateForm from './components/UpdateForm';
 import { deleteTab, getData } from './actions';
 import AddForm from './components/AddForm';
@@ -43,7 +39,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <NavBar />
-        <Route exact path = '/' component={Login} />
+        <Route exact path='/' component={Login} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route path='/home' component={TabsList} />

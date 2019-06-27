@@ -24,13 +24,14 @@ export const UPDATE_START = 'UPDATE_START';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const UPDATE_FAIL = 'UPDATE_FAIL';
 
+export const SEARCH = 'SEARCH';
+
 //SIGN UP
 export const signUp = creds => dispatch => {
   dispatch({ type: SIGNUP_START });
   return axiosWithAuth()
     .post('/api/register', creds) //endpoint?
     .then(res => {
-      console.log(res.data);
       dispatch({ type: SIGNUP_SUCCESS, payload: creds.email });
       return true;
     })
@@ -46,7 +47,6 @@ export const login = creds => dispatch => {
   return axiosWithAuth()
     .post('/api/login', creds) //endpoint?
     .then(res => {
-      console.log(res.data);
       localStorage.setItem('token', res.data.token);
       dispatch({ type: LOGIN_SUCCESS });
       return true;
@@ -93,7 +93,6 @@ export const deleteTab = id => dispatch => {
   return axiosWithAuth()
     .delete(`/tabs/${id}`) //Delete endpoint
     .then(res => {
-      console.log('delete', res);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
       return true;
     })
@@ -109,7 +108,6 @@ export const updateTab = tab => dispatch => {
   return axiosWithAuth()
     .put(`/tabs/${tab.id}`, tab) //PUT ENDPOINT
     .then(res => {
-      console.log('updateTab', res);
       dispatch({ type: UPDATE_SUCCESS, payload: res.data });
       return true;
     })
@@ -117,4 +115,12 @@ export const updateTab = tab => dispatch => {
       console.log('update error', err.response);
       dispatch({ type: UPDATE_FAIL, payload: err.response });
     });
+};
+
+// SEARCH
+export const searchTabs = filteredTabs => {
+  return {
+    type: SEARCH,
+    payload: filteredTabs
+  };
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Modal } from 'react-bootstrap';
 import { updateTab } from '../actions';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -31,6 +30,9 @@ class UpdateForm extends React.Component {
     e.preventDefault();
     this.props.updateTab(this.state.activeTab).then(res => {
       res && this.props.history.push('/home');
+    });
+    this.setState({
+      activeTab: ''
     });
   };
   render() {
@@ -94,7 +96,7 @@ class UpdateForm extends React.Component {
               Cancel
             </Button>
             <Button className='update-btn' onClick={e => this.updateTab(e)}>
-              Add Tab
+              Update Tab
             </Button>
           </ModalFooter>
         </Modal>

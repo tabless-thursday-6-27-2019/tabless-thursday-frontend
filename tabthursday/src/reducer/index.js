@@ -16,7 +16,8 @@ import {
   UPDATE_FAIL,
   SIGNUP_START,
   SIGNUP_SUCCESS,
-  SIGNUP_FAIL
+  SIGNUP_FAIL,
+  SEARCH
 } from '../actions';
 
 const initialState = {
@@ -28,7 +29,8 @@ const initialState = {
   tabs: [],
   categories: ['Resources', 'Deployments', 'Repos', 'Training Kit', 'Lessons'],
   addingTab: false,
-  email: ''
+  email: '',
+  filteredTabs: null
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -83,7 +85,6 @@ const rootReducer = (state = initialState, action) => {
         fetching: false,
         error: null,
         tabs: action.payload
-        
       };
     case FETCH_FAIL:
       return {
@@ -120,8 +121,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         deletingTab: false,
-        error: null,
-        tabs: [...state.tabs, action.payload]
+        error: null
       };
     case DELETE_FAIL:
       return {
@@ -136,18 +136,23 @@ const rootReducer = (state = initialState, action) => {
         error: null
       };
     case UPDATE_SUCCESS:
+      let newArr = state.tabs.filter(tab => tab.id !== action.payload.id);
       return {
         ...state,
         updatingTab: false,
         error: null,
-        fetching: true,
-        tabs: [...state.tabs, action.payload]
+        tabs: [...newArr, action.payload]
       };
     case UPDATE_FAIL:
       return {
         ...state,
         updatingTab: false,
         error: action.payload
+      };
+    case SEARCH:
+      return {
+        ...state,
+        filteredTabs: action.payload
       };
     default:
       return state;
